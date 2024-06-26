@@ -12,4 +12,45 @@
     background-repeat: no-repeat;
     @apply bg-[url(assets/images/background-mobile.svg)];
   }
+
+  section {
+    width: min(100%, 324px);
+    background: rgb(0, 20, 121);
+    background: -moz-linear-gradient(
+      0deg,
+      rgba(0, 20, 121, 0.83) 0%,
+      rgba(52, 74, 186, 1) 100%
+    );
+    background: -webkit-linear-gradient(
+      0deg,
+      rgba(0, 20, 121, 0.83) 0%,
+      rgba(52, 74, 186, 1) 100%
+    );
+    background: linear-gradient(
+      0deg,
+      rgba(0, 20, 121, 0.83) 0%,
+      rgba(52, 74, 186, 1) 100%
+    );
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#001479",endColorstr="#344aba",GradientType=1);
+  }
+
+  #game-btn-play {
+    background: rgb(113, 153, 255);
+    background: -moz-linear-gradient(
+      0deg,
+      rgba(113, 153, 255, 1) 0%,
+      rgba(254, 113, 254, 1) 100%
+    );
+    background: -webkit-linear-gradient(
+      0deg,
+      rgba(113, 153, 255, 1) 0%,
+      rgba(254, 113, 254, 1) 100%
+    );
+    background: linear-gradient(
+      0deg,
+      rgba(113, 153, 255, 1) 0%,
+      rgba(254, 113, 254, 1) 100%
+    );
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#7199ff",endColorstr="#fe71fe",GradientType=1);
+  }
 }
