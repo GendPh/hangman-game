@@ -1,0 +1,27 @@
+<main class="bg-main-gradient ">
+  <app-header GetTitle="Pick a Category" />
+
+  <section class="mt-[59px] grid gap-4">
+    @if(!categoriesLoaded ) {
+    <!-- Loading while gets the categories -->
+    <span class="button primary categories w-full flex justify-center animate-fade-in-out">
+      <l-bouncy size="45" speed="1.75" color="white" />
+    </span>
+    <span class="button primary categories w-full flex justify-center animate-fade-in-out">
+      <l-bouncy size="45" speed="1.75" color="white" />
+    </span>
+    <span class="button primary categories w-full flex justify-center animate-fade-in-out">
+      <l-bouncy size="45" speed="1.75" color="white" />
+    </span>
+    }@else if(categoriesLoaded && !categoriesError) {
+    <!-- Render the categories if no error happen -->
+    <app-category *ngFor="let cat of categories" [GetCategory]="cat" />
+    }@else{
+    <!-- Render an error message if something went wrong -->
+    <p class="text-center text-3xl">Something went wrong.</p>
+    <p class="text-center text-3xl">Error: {{errorMessage}}</p>
+    }
+  </section>
+
+
+</main>
