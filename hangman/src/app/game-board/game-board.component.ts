@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { GameService } from '../services/game.service';
 
 @Component({
   selector: 'app-game-board',
@@ -10,5 +11,6 @@ import { CommonModule } from '@angular/common';
 })
 export class GameBoardComponent {
   @Input('GetWord') word: string[][] = [];
-
+  
+  constructor(public gameService: GameService) { }
 }

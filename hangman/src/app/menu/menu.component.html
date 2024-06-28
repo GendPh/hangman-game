@@ -1,0 +1,30 @@
+<section id="menu" [ngClass]="{open: menuOpen}">
+
+  <article class="relative z-50 w-full max-w-[592px] px-[25px] pb-[83px] flex flex-col items-center">
+
+    <h2 class="relative heading-l text-clip-bg mb-[43px]">
+      @if(!won && !lost){
+      Paused
+      }@else if (won && !lost) {
+      You won!
+      }@else if (!won && lost) {
+      You lost!
+      }
+    </h2>
+
+    <button (click)="menuService.closeMenu()" class="w-fit button primary">
+      continue
+    </button>
+
+    <button (click)="menuService.closeMenu()" routerLink="/categories" class="w-fit button primary my-[34px]">
+      new category
+    </button>
+
+    <button (click)="menuService.closeMenu()" routerLink="/" class="w-fit button secondary">
+      quit game
+    </button>
+
+  </article>
+
+  <section class="back-menu-bg"></section>
+</section>

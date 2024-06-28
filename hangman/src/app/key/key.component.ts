@@ -16,9 +16,7 @@ export class KeyComponent {
   constructor(private gameService: GameService) { }
 
   checkLetter() {
-    if (this.gameService.checkLetter(this.letter)) {
-      this.disabled = true;
-      console.log('Correct');
-    }
+    this.disabled = true;
+    this.gameService.checkLetter(this.letter)
   }
 }

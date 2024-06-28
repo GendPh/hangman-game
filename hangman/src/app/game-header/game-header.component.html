@@ -1,6 +1,7 @@
 <section class="flex items-center justify-between pt-8">
   <div class="flex justify-start items-center gap-4">
-    <span role="button" class="btn-gradient-bg w-10 aspect-square flex justify-center items-center">
+    <span (click)="openMenu()" role="button"
+      class="btn-gradient-bg w-10 aspect-square flex justify-center items-center">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="13" fill="none" viewBox="0 0 38 32">
         <path fill="#fff" d="M0 0h38v7H0zM0 13h38v6H0zM0 25h38v7H0z" />
       </svg>
@@ -29,3 +30,5 @@
 
   </div>
 </section>
+
+<app-menu />

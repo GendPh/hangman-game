@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { GameHeaderComponent } from '../game-header/game-header.component';
 import { GameBoardComponent } from '../game-board/game-board.component';
 import { GameKeysComponent } from '../game-keys/game-keys.component';
@@ -16,7 +16,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 
 
-export class GameComponent implements OnInit {
+export class GameComponent implements OnInit, OnDestroy {
 
   load: boolean = false;
   loadFail: boolean = false;
@@ -27,7 +27,6 @@ export class GameComponent implements OnInit {
     private route: ActivatedRoute,
     public gameWord: GameService
   ) { }
-
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -58,4 +57,14 @@ export class GameComponent implements OnInit {
     });
   }
 
+  reset() {
+    this.load = false;
+    this.loadFail = false;
+    this.words = [];
+  }
+
+  ngOnDestroy(): void {
+    this.reset();
+    this.gameService.reset();
+  }
 }

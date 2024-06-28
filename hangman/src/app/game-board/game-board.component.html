@@ -1,7 +1,13 @@
 <section class="mt-[78px]">
 
-  <div class="flex justify-center items-center gap-2 mb-4" *ngFor="let w of word">
-    <div class="button primary letter " *ngFor="let letter of w">
+  <div class="flex justify-center flex-wrap items-center gap-2 mb-8" *ngFor="let w of word">
+    <div class="button primary letter" *ngFor="let letter of w"
+      [ngClass]="{'correct': gameService.lettersSelected.includes(letter)}">
+      @if(gameService.lettersSelected.includes(letter)){
+      <p class="heading-sm">{{letter}}</p>
+      }@else{
+      <p class="heading-sm opacity-0">_</p>
+      }
     </div>
   </div>
 
