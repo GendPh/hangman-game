@@ -12,7 +12,7 @@ export class GameService {
 
   private url: string = 'assets/data.json';
 
-  public chances: number = 5;
+  public chances: number = 8;
   public lifeSignal = signal<number>(this.chances * 20);
 
   private wordSubject: BehaviorSubject<string[][]> = new BehaviorSubject<string[][]>([]);
