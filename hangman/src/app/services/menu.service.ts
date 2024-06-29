@@ -1,21 +1,18 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Injectable, signal } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MenuService {
-
-  private menuSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  public menu$: Observable<boolean> = this.menuSubject.asObservable();
+  public menuStateSignal = signal<boolean>(false);
 
   constructor() { }
 
   openMenu() {
-    this.menuSubject.next(true);
+    this.menuStateSignal.update((state) => true);
   }
-  
+
   closeMenu() {
-    this.menuSubject.next(false);
+    this.menuStateSignal.update((state) => false);
   }
 }

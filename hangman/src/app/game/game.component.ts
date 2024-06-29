@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, Component, OnDestroy, OnInit } from '@angular/core';
 import { GameHeaderComponent } from '../game-header/game-header.component';
 import { GameBoardComponent } from '../game-board/game-board.component';
 import { GameKeysComponent } from '../game-keys/game-keys.component';
-
+import { mirage } from 'ldrs'
 import { GameService } from '../services/game.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -12,7 +12,7 @@ import { ActivatedRoute } from '@angular/router';
   standalone: true,
   imports: [CommonModule, GameHeaderComponent, GameBoardComponent, GameKeysComponent],
   templateUrl: './game.component.html',
-  styles: ``
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 
 
@@ -29,6 +29,8 @@ export class GameComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
+    mirage.register()
+
     this.route.params.subscribe(params => {
       const category = params['category'];
 
@@ -50,7 +52,9 @@ export class GameComponent implements OnInit, OnDestroy {
           },
           complete: () => {
             // Completed
-            this.load = true;
+            setTimeout(() => {
+              this.load = true;
+            }, 1000);
           }
         }
       );
@@ -65,6 +69,6 @@ export class GameComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.reset();
-    this.gameService.reset();
+    this.gameService.initGame();
   }
 }

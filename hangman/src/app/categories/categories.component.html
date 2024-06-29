@@ -1,7 +1,7 @@
 <main class="bg-main-gradient ">
   <app-header GetTitle="Pick a Category" />
 
-  <section class="mt-[59px] grid gap-4">
+  <section class="mt-[59px] md:mt-[114px] grid gap-4 md:gap-8 md:grid-cols-2 lg:grid-cols-3">
     @if(!categoriesLoaded ) {
     <!-- Loading while gets the categories -->
     <span class="button primary categories w-full flex justify-center animate-fade-in-out">

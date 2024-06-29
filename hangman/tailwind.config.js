@@ -19,12 +19,17 @@ module.exports = {
       "fade-in": {
         "0%": { opacity: 0 },
         "100%": { opacity: 1 },
+      },
+      "ping": {
+        "75%, 100%": { transform: "scale(1.4)", opacity: 0 }
       }
     },
     animation: {
       "fade-in-out": 'fade-in-out 1s linear infinite',
       "fade-in": 'fade-in 0.3s linear',
+      "ping": 'ping 0.5s cubic-bezier(0, 0, 0.2, 1) infinite',
     }
+
   },
   plugins: [],
 }

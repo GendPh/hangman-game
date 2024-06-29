@@ -10,7 +10,7 @@
 
     background-size: cover;
     background-repeat: no-repeat;
-    @apply bg-[url(assets/images/background-mobile.svg)];
+    @apply bg-[url(assets/images/background-mobile.svg)] md:bg-[url(assets/images/background-tablet.svg)] lg:bg-[url(assets/images/background-desktop.svg)];
   }
   main {
     @apply min-h-screen px-[25px] pb-8;
@@ -117,13 +117,13 @@
   }
   .heading-m {
     line-height: 120%;
-    letter-spacing: 5%;
+    letter-spacing: 2px;
     @apply text-[48px];
   }
 
   .heading-l {
     line-height: 120%;
-    letter-spacing: 5%;
+    letter-spacing: 4px;
     @apply text-[88px];
   }
   .heading-xl {
@@ -134,7 +134,7 @@
   .description {
     line-height: 120%;
     letter-spacing: 5%;
-    @apply text-[16px] text-[#887DC0];
+    @apply text-[16px] md:text-[20px] text-[#887DC0];
   }
 
   .btn-gradient-bg {
@@ -189,6 +189,31 @@
   }
 
   .text-clip-bg {
+    position: relative;
+    &::before {
+      content: attr(data-text);
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+
+      text-shadow: 5.5px 5.5px 0 #243041, 5.5px -5.5px 0 #243041,
+        -5.5px 5.5px 0 #243041, -5.5px -5.5px 0 #243041, 5.5px 0px 0 #243041,
+        5.5px 5.5px 0 #243041, -5.5px 0px 0 #243041, 0px -5.5px 0 #243041;
+
+      font-weight: 800;
+    }
+    &::after {
+      content: attr(data-text);
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+
+      font-weight: 800;
+      @apply text-bg-gradient;
+    }
+  }
+
+  .text-bg-gradient {
     background: rgb(255, 255, 255);
     background: -moz-linear-gradient(
       0deg,
@@ -210,8 +235,6 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-
-    -webkit-text-stroke: 4px #243041;
   }
 
   .button {

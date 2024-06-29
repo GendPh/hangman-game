@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { MenuService } from '../services/menu.service';
 import { CommonModule } from '@angular/common';
 import { GameService } from '../services/game.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -12,23 +13,37 @@ import { GameService } from '../services/game.service';
   styles: ``
 })
 export class MenuComponent {
-  menuOpen: boolean = false;
   won: boolean = false;
   lost: boolean = false;
 
   constructor(
     public gameService: GameService,
-    public menuService: MenuService
-  ) {
-    menuService.menu$.subscribe(menu => {
-      this.menuOpen = menu;
+    public menuService: MenuService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) { }
+
+  reloadGame() {
+    // Close the menu
+    this.menuService.closeMenu();
+
+    // Store the current URL
+    const currentUrl = this.router.url;
+
+    // Define the category variable
+    let category: string = "";
+
+    // Subscribe to route params to get the 'category' parameter value
+    this.route.params.subscribe(params => {
+      category = params['category']; // No need to decodeURIComponent here
     });
-    gameService.win$.subscribe(win => {
-      this.won = win;
-    });
-    gameService.lost$.subscribe(lost => {
-      this.won = lost;
+
+    // Reload the route to reset the game with the new category parameter
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      // Navigate to the current URL with the updated category parameter
+      this.router.navigate([currentUrl.split('/').slice(0, -1).join('/') + '/' + category]);
     });
   }
+
 
 }

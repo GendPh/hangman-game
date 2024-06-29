@@ -1,6 +1,18 @@
-<main class="bg-main-gradient">
-  
+<main class="bg-main-gradient text-center text-white">
+
   <app-game-header />
+  @if(!load){
+  <section class="flex flex-col justify-center items-center gap-8 mt-20">
+    <h2 class="heading-l">Loading Word</h2>
+    <l-mirage size="60" speed="2.5" color="white"></l-mirage>
+  </section>
+  }@else if(load && !loadFail){
   <app-game-board [GetWord]="words" />
   <app-game-keys />
+  }@else{
+  <section class="mt-20">
+    <h2 class="heading-m mb-10">Failed loading this category.</h2>
+    <h2 class="heading-m">Try another category.</h2>
+  </section>
+  }
 </main>

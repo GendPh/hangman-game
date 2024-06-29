@@ -1,4 +1,4 @@
-<section class="flex items-center justify-between pt-8">
+<section class="flex items-center pt-8">
   <span [routerLink]="RouterLink" role="button" class="btn-gradient-bg p-3 ">
     <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" fill="none" viewBox="0 0 41 39">
       <path fill="#fff"
@@ -6,5 +6,6 @@
     </svg>
   </span>
 
-  <h2 class="text-clip-bg heading-m">{{title}}</h2>
+  <h2 class="w-full text-end md:text-center relative heading-m md:heading-l text-clip-bg" [attr.data-text]="title">{{title}}</h2>
+
 </section>

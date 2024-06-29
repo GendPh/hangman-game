@@ -1,20 +1,27 @@
-<section id="menu" [ngClass]="{open: menuOpen}">
+<section id="menu" [ngClass]="{'open': menuService.menuStateSignal()}">
 
   <article class="relative z-50 w-full max-w-[592px] px-[25px] pb-[83px] flex flex-col items-center">
 
-    <h2 class="relative heading-l text-clip-bg mb-[43px]">
-      @if(!won && !lost){
-      Paused
-      }@else if (won && !lost) {
-      You won!
-      }@else if (!won && lost) {
-      You lost!
-      }
+    <h2 class="relative heading-l text-clip-bg mb-[43px]"
+      [attr.data-text]="!gameService.winStateSignal() && !gameService.lostStateSignal() ? 'Paused' : (gameService.winStateSignal() && !gameService.lostStateSignal()) ? 'You win' : 'You lose' ">
+      {{ !gameService.winStateSignal() && !gameService.lostStateSignal() ? 'Paused' : (gameService.winStateSignal() &&
+      !gameService.lostStateSignal()) ? 'You win' : 'You lose' }}
     </h2>
 
+
+    @if(!gameService.winStateSignal() && !gameService.lostStateSignal()){
     <button (click)="menuService.closeMenu()" class="w-fit button primary">
       continue
     </button>
+    }@else if(gameService.winStateSignal() && !gameService.lostStateSignal()){
+    <button (click)="reloadGame()" class="w-fit button primary">
+      next word
+    </button>
+    }@else if (!gameService.winStateSignal() && gameService.lostStateSignal()){
+    <button (click)="reloadGame()" class="w-fit button primary">
+      try again
+    </button>
+    }
 
     <button (click)="menuService.closeMenu()" routerLink="/categories" class="w-fit button primary my-[34px]">
       new category

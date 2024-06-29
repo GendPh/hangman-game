@@ -1,10 +1,15 @@
-<article class="bg-white rounded-[20px] p-8">
-  <div class="heading-xs flex justify-start items-center mb-4 gap-4">
-    <span class="text-Blue">{{index}}</span>
-    <h3>{{title}}</h3>
+<article
+  class="bg-white rounded-[20px] p-8 flex justify-start flex-col md:flex-row md:gap-10 md:justify-center lg:flex-col h-full lg:text-center lg:gap-0">
+
+  <div class="flex justify-start items-center mb-4 md:mb-0 lg:mb-10 gap-4 col-span-2 ">
+    <span class="lg:w-full heading-xs md:heading-sm text-Blue">{{index}}</span>
+    <h3 class="heading-xs md:heading-sm md:hidden">{{title}}</h3>
   </div>
 
-  <p class="description">
-    {{rule}}
-  </p>
+  <div>
+    <h3 class="heading-xs mb-4 lg:mb-10 md:heading-sm hidden md:block">{{title}}</h3>
+    <p class="description">
+      {{rule}}
+    </p>
+  </div>
 </article>
