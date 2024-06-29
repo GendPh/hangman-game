@@ -13,7 +13,7 @@
     @apply bg-[url(assets/images/background-mobile.svg)] md:bg-[url(assets/images/background-tablet.svg)] lg:bg-[url(assets/images/background-desktop.svg)];
   }
   main {
-    @apply min-h-screen px-[25px] pb-8;
+    @apply min-h-screen px-[25px] lg:px-[112px] pb-8;
   }
   #home section::before {
     content: '';
